@@ -57,8 +57,12 @@ header nav {
 header nav a {
   color: #333;
   margin-left: 3rem;
+  padding: .3rem;
   text-decoration: none;
   border-bottom: 0.2rem solid #333;
+}
+header nav a:hover{
+  background-color: rgb(240, 237, 219);
 }
 main {
   border: 3px solid var(--color-contrart-1);
@@ -248,4 +252,13 @@ footer p {
     text-align: center;
     justify-self: center;
   }
+  form button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  form button:active {
+    transform: translateY(0.15rem);
+    box-shadow: none;
+  }
+
 }

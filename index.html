@@ -43,6 +43,8 @@
               class="form-input"
               placeholder="First Name"
               autocomplete="given-name"
+              name="first-name"
+              required
             />
             <label for="first-name" class="form-label">First Name</label>
           </div>
@@ -53,16 +55,20 @@
               class="form-input"
               placeholder="Last Name"
               autocomplete="family-name"
+              name="last-name"
+              required
             />
             <label for="last-name" class="form-label">Last Name</label>
           </div>
           <div class="input-wrapper">
             <input
-              type="text"
+              type="email"
               id="email"
               class="form-input"
               placeholder="E-Mail Address"
               autocomplete="email"
+              name="email"
+              required
             />
             <label for="email" class="form-label">E-Mail adress </label>
           </div>
@@ -72,8 +78,13 @@
               id="phone"
               class="form-input"
               placeholder="Phone Number"
+              name="telephone-number"
+              pattern="^\+?[1-9]\d{1,14}$"
+              required
             />
-            <label for="phone" class="form-label">Phone Number</label>
+            <label for="phone" class="form-label"
+              >Phone Number (e.164 format)</label
+            >
           </div>
           <div class="input-wrapper">
             <input
@@ -81,6 +92,9 @@
               id="password"
               class="form-input"
               placeholder="Password"
+              pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+              title="The password must be at least 8 characters long, containing one upper case letter, one lower case letter and one number/special character"
+              required
             />
             <label for="password" class="form-label">Password</label>
           </div>
@@ -90,12 +104,13 @@
               id="password-confirmation"
               class="form-input"
               placeholder="Confirm Password"
+              required
             />
             <label for="password-confirmation" class="form-label"
               >Confirm Password</label
             >
           </div>
-          <button type="button"><strong>Create an Account</strong></button>
+          <button type="submit"><strong>Create an Account</strong></button>
           <p class="log-in">
             Already have an account?<a href="#" class="log-in">Log in</a>
           </p>
@@ -106,5 +121,20 @@
       <p>PawnB4</p>
       <a href="https://github.com/PawnB4" target="_blank">Github</a>
     </footer>
+    <script>
+      let password = document.getElementById("password"),
+        confirm_password = document.getElementById("password-confirmation");
+
+      function validatePassword() {
+        if (password.value != confirm_password.value) {
+          confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+          confirm_password.setCustomValidity("");
+        }
+      }
+
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;
+    </script>
   </body>
 </html>
